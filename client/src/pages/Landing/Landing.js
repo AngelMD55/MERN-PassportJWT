@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SignUp from "../../components/SignUp/SignUp";
 import API from "../../utils/API";
+import "./style.css"
 
 class Landing extends Component {
     state = {
@@ -39,18 +40,33 @@ class Landing extends Component {
 
     render() {
         return (
-            <div>
-                <div className="col-md-6">
-                    <SignUp
-                        firstName={this.state.firstName}
-                        lastName={this.state.lastName}
-                        email={this.state.email}
-                        password={this.state.password}
-                        handleInputChange={this.handleInputChange}
-                        signUpOnClick={this.signUpOnClick}
-                    />
-                </div>
+            <div id="loggedButton">
+                {(this.props.loggedIn) ?
+                    <div className="row" style={{ textAlign: "center" }}>
+                        <div className="col-md-6 col-lg-6" style={{ display: "inline-block" }} >
 
+                        </div>
+                        <div className="col-md-6 col-lg-6" style={{ display: "inline-block" }}>
+                            <button type="button" className="btn btn-danger seeUsers">See All Users</button>
+                        </div>
+                    </div>
+                    :
+                    <div className="row" style={{ textAlign: "center" }}>
+                        <div className="col-md-6 col-lg-6" style={{ display: "inline-block" }} >
+                            <SignUp
+                                firstName={this.state.firstName}
+                                lastName={this.state.lastName}
+                                email={this.state.email}
+                                password={this.state.password}
+                                handleInputChange={this.handleInputChange}
+                                signUpOnClick={this.signUpOnClick}
+                            />
+                        </div>
+                        <div className="col-md-6 col-lg-6" style={{ display: "inline-block" }}>
+                            <button type="button" className="btn btn-danger seeUsers">See All Users</button>
+                        </div>
+                    </div>
+                }
             </div>
         )
     }
@@ -58,3 +74,5 @@ class Landing extends Component {
 
 
 export default Landing;
+
+{/* <div style={{ textAlign: "center" }}><div style={{ display: "inline-block", marginTop:"200px" }}><button type="button" class="btn btn-danger" id="aloneButton" style={{ display: "inline-block" }}>See All Users</button></div></div> */ }

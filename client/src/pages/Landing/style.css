@@ -1,0 +1,17 @@
+.seeUsers{
+    position: relative;
+    top: 30%;
+}
+
+#aloneButton{
+    position: relative;
+    top: 30%;
+}
+
+.row{
+    height:100vh;
+}
+
+#loggedButton{
+    height:59.7vh;
+}

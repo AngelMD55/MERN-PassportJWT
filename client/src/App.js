@@ -4,6 +4,7 @@ import API from './utils/API';
 import axios from "axios";
 import Navbar from "./components/Navbar/Navbar";
 import Landing from "./pages/Landing/Landing";
+import Profile from "./pages/Profile/Profile";
 import NoMatch from "./pages/NoMatch/NoMatch";
 import Footer from "./components/Footer/Footer";
 
@@ -16,7 +17,6 @@ class App extends Component {
     loggedIn: false,
     error: null
   }
-
 
   updateUser = () => {
     API.getCurrentUser()
@@ -65,7 +65,6 @@ class App extends Component {
       });
   };
 
-  
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -77,11 +76,19 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar/>
+          <Navbar
+            user={this.state.user}
+            email={this.state.email}
+            password={this.state.password}
+            loggedIn={this.state.loggedIn}
+            handleInputChange={this.handleInputChange}
+            loginOnClick={this.loginOnClick}
+            logOutOnClick={this.logOutOnClick}
+            error={this.state.error}
+          />
           <Switch>
-            <Route exact path="/" render={(props) => <Landing updateUser={this.updateUser} {...props} />} />
-            {/* <Route exact path="/user/:userid" render={(props) => <UserView loggedIn={this.state.loggedIn} {...props} />} /> */}
-            {/* <Route exact path="/dashboard/:userid" render={(props) => <Dashboard user={this.state.user} {...props} />} /> */}
+            <Route exact path="/" render={(props) => <Landing user={this.state.user} loggedIn={this.state.loggedIn} {...props} />} />
+            {/* <Route exact path="/profile" render={(props) => <Profile updateUser={this.updateUser} {...props} />} /> */}
             <Route component={NoMatch} />
           </Switch>
           <Footer />

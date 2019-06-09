@@ -2,9 +2,9 @@ const express = require("express")
 const router = express.Router();
 const Users = require("../models/Users");
 const bcrypt = require("bcrypt")
-var jwt = require('jsonwebtoken');
-var passport = require('passport');
-var secret = require('../config/secret');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const secret = require('../config/secret');
 require('../config/passport')(passport);
 
 // Validate password
